@@ -1,0 +1,63 @@
+<!-- Dashboard-Ansicht für eingeloggte Nutzer. Hier kommt die Navbar und die Hauptfunktionen hin. -->
+<div class="dashboard-navbar">
+  <div class="navbar-left">
+    <span class="logo" (click)="navigateDashboard()">sep-voyage</span>
+  </div>
+  <div class="navbar-right">
+    <button class="logout-btn" (click)="logout()">Logout</button>
+    <button *ngIf="role === 'KUNDE'" class="active-ride-navbar-btn" (click)="goToActiveRide()">
+      <span class="btn-icon">🚕</span>
+      <span>Meine Fahrt</span>
+    </button>
+    <button *ngIf="role === 'KUNDE'" class="guthaben-navbar-btn" (click)="goToGeldkonten()">
+      <span class="btn-icon">💰</span>
+      <span>Mein Guthaben</span>
+    </button>
+    <app-kunde *ngIf="role === 'KUNDE'"></app-kunde>
+    <app-fahrer *ngIf="role === 'FAHRER'"></app-fahrer>
+<!--    <button class="profile-btn" (click)="goToProfile()">-->
+<!--      <ng-container *ngIf="profileImageUrl && profileImageUrl.length > 0; else emptyCircle">-->
+<!--        <img [src]="profileImageUrl" alt="Profilbild" class="profile-img" />-->
+<!--      </ng-container>-->
+<!--      <ng-template #emptyCircle>-->
+<!--        <span class="profile-img empty"></span>-->
+<!--      </ng-template>-->
+<!--    </button>-->
+  </div>
+</div>
+<div class="dashboard-container">
+  <div class="dashboard-content">
+    <h1 class="dashboard-title">Willkommen bei SEP Voyage!</h1>
+    <div class="dashboard-buttons">
+      <button class="dashboard-btn" (click)="goToMap()">
+        <span class="btn-icon">🗺️</span>
+        <span>Karte</span>
+      </button>
+      <button class="dashboard-btn" (click)="goToRideRequest()" *ngIf="role === 'KUNDE'">
+        <span class="btn-icon">🚗</span>
+        <span>Fahranfrage erstellen/zeigen</span>
+      </button>
+      <button class="dashboard-btn" (click)="goToFahrerRideRequests()" *ngIf="role === 'FAHRER'">
+        <span class="btn-icon">📋</span>
+        <span>Verfügbare Fahranfragen</span>
+      </button>
+      <button class="dashboard-btn" (click)="goToKundeRideOffers()" *ngIf="role === 'KUNDE'">
+        <span class="btn-icon">📋</span>
+        <span>Verfügbare Fahrtangebot</span>
+      </button>
+      <button class="dashboard-btn" (click)="goToFahrthistorie()" *ngIf="role === 'KUNDE' || role === 'FAHRER'">
+        <span class="btn-icon">📜</span>
+        <span>Fahrthistorie</span>
+      </button>
+      <button class="dashboard-btn" (click)="goToFahrerStatistiken()" *ngIf="role === 'FAHRER'">
+        <span class="btn-icon">📊</span>
+        <span>Meine Statistiken</span>
+      </button>
+      <button class="dashboard-btn" (click)="goToFahrerLeaderBoard()">
+        <span class="btn-icon">🏆</span>
+        <span>Fahrer-Leaderboard</span>
+      </button>
+    </div>
+    <!-- Hier können später Fahrer-spezifische Funktionen angezeigt werden -->
+  </div>
+</div>

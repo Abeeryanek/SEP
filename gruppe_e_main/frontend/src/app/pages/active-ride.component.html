@@ -1,0 +1,48 @@
+<div class="active-ride-container">
+  <h2>Meine aktive Fahrt</h2>
+  <div *ngIf="successMsg" class="success-msg">{{ successMsg }}</div>
+  <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+
+  <div *ngIf="activeRequest; else noActive">
+    <div class="active-ride-card">
+      <div class="ride-detail-row">
+        <b>Start:</b> {{ getLocationString(activeRequest.start) }}
+      </div>
+      <div class="ride-detail-row" *ngIf="activeRequest.stopovers && activeRequest.stopovers.length > 0">
+        <b>Zwischenstopps:</b>
+        <ul>
+          <li *ngFor="let stop of activeRequest.stopovers">{{ getLocationString(stop) }}</li>
+        </ul>
+      </div>
+      <div class="ride-detail-row">
+        <b>Ziel:</b> {{ getLocationString(activeRequest.destination) }}
+      </div>
+      <div class="ride-detail-row">
+        <b>Fahrzeugklasse:</b> {{ activeRequest.vehicleClass }}
+      </div>
+      <div class="ride-detail-row">
+        <b>Status:</b> {{ activeRequest.status }}
+      </div>
+      <div class="ride-detail-row">
+        <b>Erstellt:</b> {{ activeRequest.createdAt | date:'short' }}
+      </div>
+      <div class="ride-detail-row">
+        <b>Zuletzt geändert:</b> {{ activeRequest.updatedAt | date:'short' }}
+      </div>
+      <div class="ride-actions">
+        <button (click)="completeRequest()" [disabled]="activeRequest.status === 'ABGESCHLOSSEN'">Abschließen</button>
+        <button (click)="deleteRequest()" class="delete-btn">Löschen</button>
+        <!--  Fahrtplanung-->
+        <button (click)="showRouteOnMap()">Route anzeigen</button>
+        <!--  Fahrtplanung-->
+      </div>
+    </div>
+  </div>
+  <ng-template #noActive>
+    <div class="no-active-info">Du hast aktuell keine aktive Fahranfrage.</div>
+  </ng-template>
+</div>
+<div class="map-modal" *ngIf="activeRequest && showMap ">
+  <button class="map-close-btn" (click)="closeMap()"><i class="fa-solid fa-circle-xmark"></i></button>
+  <app-map [routePlan]="activeRequest.routePlan" [showOnlyMode]="true"></app-map>
+</div>

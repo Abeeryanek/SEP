@@ -1,0 +1,49 @@
+
+<div class="kunde-ride-requests-container">
+  <h2>Verfügbare Fahrtangebote</h2>
+
+  <!-- Notification-Banner -->
+  <div *ngIf="notification" class="customer-notification">
+    {{ notification }}
+  </div>
+
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+  <div *ngIf="statusMessage" class="alert alert-success">{{ statusMessage }}</div>
+
+  <table>
+    <thead>
+    <tr>
+      <th (click)="sortBy('driverName')">
+        Fahrername {{ sortColumn === 'driverName' ? (sortAsc ? '↑' : '↓') : '' }}
+      </th>
+      <th (click)="sortBy('rating')">
+        Bewertung {{ sortColumn === 'rating' ? (sortAsc ? '↑' : '↓') : '' }}
+      </th>
+      <th (click)="sortBy('totalTrips')">
+        Anzahl Fahrten {{ sortColumn === 'totalTrips' ? (sortAsc ? '↑' : '↓') : '' }}
+      </th>
+      <th (click)="sortBy('drivenDistance')">
+        Gesamtdistanz {{ sortColumn === 'drivenDistance' ? (sortAsc ? '↑' : '↓') : '' }}
+      </th>
+      <th>Aktion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let offer of getSortedOffers()">
+      <td>{{ offer.driverName }}</td>
+      <td>{{ offer.rating }}</td>
+      <td>{{ offer.totalTrips }}</td>
+      <td>{{ offer.drivenDistance }}</td>
+      <td>
+        <button (click)="acceptPendingOffer(offer)">Akzeptieren</button>
+        <button (click)="rejectPendingOffer(offer)">Ablehnen</button>
+      </td>
+    </tr>
+    <tr *ngIf="getSortedOffers().length === 0">
+      <td colspan="5" style="text-align:center; color: #888;">
+        Keine Fahrtangebote verfügbar.
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

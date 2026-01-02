@@ -1,0 +1,64 @@
+<div class="simulation-container">
+  <div class="map-area">
+    <app-map
+      [rideData]="rideData"
+      [simulationMode]="true"
+      [simulationSpeed]="simulationSpeed"
+      [controlCommand]="controlCommand"
+      (simulationCompleted)="onSimulationCompleted($event)"
+      (simulationStateChanged)="onSimulationStateChanged($event)"
+      (routePointsChanged)="onRoutePointsChanged($event)"
+    ></app-map>
+  </div>
+
+
+  <app-chat
+    *ngIf="rideData && rideData.customer && rideData.driver && currentUserId > 0 && showChat"
+    [rideMatch]="rideData"
+    [myUserId]="currentUserId">
+  </app-chat>
+
+
+
+  <div class="controls">
+    <button (click)="startSimulation()" [disabled]="isSimulationRunning">
+      Start
+    </button>
+
+    <button (click)="pauseSimulation()">Pause</button>
+    <button (click)="resumeSimulation()">Resume</button>
+    <label>
+      Speed:
+      <input
+        type="range"
+        min="0"
+        max="100"
+        [(ngModel)]="simulationSpeed"
+        (change)="onSpeedChange()"
+      />
+    </label>
+    <button *ngIf="role === 'KUNDE'" (click)="changeEndPoint()">Change Destination</button>
+    <button *ngIf="role === 'KUNDE'" (click)="addStopover()">Add Stopover</button>
+    <button  *ngIf="role === 'KUNDE'" (click)="deleteStopover()">Remove Stopover</button>
+  </div>
+
+  <app-payment-dialog
+    *ngIf="showPaymentDialog"
+    [ridePrice]="rideData.expectedPrice"
+    [rideId]="rideData.id"
+    (paymentCompleted)="onPaymentCompleted()"
+  ></app-payment-dialog>
+
+  <app-request-payment-dialog
+    *ngIf="showRequestDialog"
+    [ridePrice]="rideData.expectedPrice"
+    [rideId]="rideData.id"
+    (paymentRequested)="showRequestDialog = false"
+  ></app-request-payment-dialog>
+
+  <app-rating-dialog
+    *ngIf="showRatingDialog"
+    [rideMatchId]="rideData.id"
+    (ratingSubmitted)="onRatingSubmitted()"
+  ></app-rating-dialog>
+</div>

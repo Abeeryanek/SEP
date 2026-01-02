@@ -1,0 +1,138 @@
+
+:host {
+  display: block;
+  height: 100vh;
+  background-image: url('https://img.freepik.com/premium-photo/abstract-background-design-hd-olive-green-color_851755-74064.jpg?semt=ais_hybrid&w=740');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-message {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1D4ED8;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  font-family: 'Bookman Old Style', serif;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: 2px solid #1D4ED8;
+}
+.sub-message{
+  font-size: 1.5rem;
+  font-weight: normal;
+  color:black;
+  font-family: 'Aptos', serif;
+  position: absolute;
+  top: 85px;
+  right: 27%;
+  text-align: right;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid black;
+}
+.center-image {
+  position: absolute;
+  top: 220px;
+  left: 100px;
+  width: 690px;
+}
+.road {
+  width: 100%;
+  height: 160px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.car {
+  position: absolute;
+  top: 50px;
+  right: -200px;
+  width: 150px;
+  animation: driveLeft 6s infinite linear;
+}
+
+@keyframes driveLeft {
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: 100vw;
+  }
+}
+.button-container {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.button-container {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button-container {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button-container {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.my-button {
+  width: 250px;
+  padding: 15px 30px;
+  background-color: floralwhite;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Bookman Old Style', serif;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.my-button:hover {
+  background-color: floralwhite;
+}
+.button-container {
+  position: absolute;
+  right: 300px;
+  top: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+}
+.login-button {
+  margin-bottom: 40px;
+}

@@ -1,0 +1,141 @@
+<div class="statistiken-container">
+  <div class="header">
+    <h1>Meine Leistungsstatistiken</h1>
+    <p>Analysiere deine Fahrer-Performance über verschiedene Zeiträume</p>
+  </div>
+
+  <!-- Filter-Bereich -->
+  <div class="filter-section">
+    <mat-card class="filter-card">
+      <mat-card-content>
+        <div class="filter-controls">
+          <!-- Ansichtsmodus -->
+          <mat-form-field class="filter-field">
+            <mat-label>Ansicht</mat-label>
+            <mat-select [(ngModel)]="viewMode" (selectionChange)="onViewModeChange()">
+              <mat-option value="monthly">Monatlich</mat-option>
+              <mat-option value="daily">Täglich</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Jahr-Auswahl -->
+          <mat-form-field class="filter-field">
+            <mat-label>Jahr</mat-label>
+            <mat-select [(ngModel)]="selectedYear" (selectionChange)="onYearChange()">
+              <mat-option *ngFor="let year of availableYears" [value]="year">
+                {{ year }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Monat-Auswahl (nur bei täglicher Ansicht) -->
+          <mat-form-field class="filter-field" *ngIf="viewMode === 'daily'">
+            <mat-label>Monat</mat-label>
+            <mat-select [(ngModel)]="selectedMonth" (selectionChange)="onMonthChange()">
+              <mat-option *ngFor="let month of months" [value]="month.value">
+                {{ month.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Charts-Bereich -->
+  <div class="charts-grid">
+    <!-- Einnahmen Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Einnahmen</mat-card-title>
+        <mat-card-subtitle>
+          {{ viewMode === 'monthly' ? 'Monatliche Einnahmen' : 'Tägliche Einnahmen' }} in Euro
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="earningsChartData"
+            [options]="chartOptions"
+            [type]="'line'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Distanz Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Gefahrene Distanz</mat-card-title>
+        <mat-card-subtitle>
+          {{ viewMode === 'monthly' ? 'Monatliche Distanz' : 'Tägliche Distanz' }} in Kilometern
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="distanceChartData"
+            [options]="chartOptions"
+            [type]="'line'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Fahrzeit Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Fahrzeit</mat-card-title>
+        <mat-card-subtitle>
+          {{ viewMode === 'monthly' ? 'Monatliche Fahrzeit' : 'Tägliche Fahrzeit' }} in Minuten
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="timeChartData"
+            [options]="chartOptions"
+            [type]="'line'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Bewertung Chart -->
+    <mat-card class="chart-card">
+      <mat-card-header>
+        <mat-card-title>Durchschnittliche Bewertung</mat-card-title>
+        <mat-card-subtitle>
+          {{ viewMode === 'monthly' ? 'Monatliche Bewertung' : 'Tägliche Bewertung' }} (1-5 Sterne)
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="ratingChartData"
+            [options]="chartOptions"
+            [type]="'line'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Info-Bereich -->
+  <div class="info-section">
+    <mat-card class="info-card">
+      <mat-card-content>
+        <h3>Hinweise zur Datenanalyse</h3>
+        <ul>
+          <li><strong>Einnahmen:</strong> Gesamte Einnahmen aus allen abgeschlossenen Fahrten</li>
+          <li><strong>Distanz:</strong> Gesamte gefahrene Strecke in Kilometern</li>
+          <li><strong>Fahrzeit:</strong> Gesamte Fahrzeit in Minuten</li>
+          <li><strong>Bewertung:</strong> Durchschnittliche Kundenbewertung (1-5 Sterne)</li>
+        </ul>
+        <p class="note">
+          <em>Hinweis: Die Daten basieren auf abgeschlossenen Fahrten. Bewertungen werden nur angezeigt, wenn Kunden eine Bewertung abgegeben haben.</em>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

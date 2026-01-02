@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --main-bg: #f5f5f5;
+  --main-color: #3a506b;
+  --accent-color: #5bc0be;
+  --text-color: #22223b;
+  --gold: #e6b800;
+}
+body {
+  background: var(--main-bg);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+}

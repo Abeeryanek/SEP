@@ -1,0 +1,68 @@
+<!--route information panel-->
+<div class="d-flex">
+  <div class="route-panel" *ngIf="!simulationMode && !showOnlyMode">
+
+    <div class="route-header">
+      <h1>Route Planner</h1>
+    </div>
+
+    <!--  start point section-->
+    <div class="route-section">
+      <div class="point-box">
+        <div class="point-label">
+          <i class="fas fa-map-marker-alt fa-2xl icon-start"></i>
+          <h2>Startpunkt</h2>
+        </div>
+        <button class="btn btn-secondary" (click)="currentType = PointType.STARTPOINT" [disabled]="startPoint">
+          <i class="fa-solid fa-plus fa-lg" *ngIf="!startPoint"></i>
+          <i class="fa-solid fa-check fa-lg" *ngIf="startPoint"></i>
+          {{startPoint ? 'Startpunkt ausgewählt!' : 'Startpunkt hinzufügen'}}
+        </button>
+
+      </div>
+    </div>
+
+    <!--  stop over section-->
+    <div class="route-section">
+      <div class="point-box">
+        <div class="point-label">
+          <i class="fas fa-map-marker-alt fa-2xl icon-wpt"></i>
+          <h2>Zwischenstopps</h2>
+        </div>
+        <button class="btn btn-secondary" (click)="currentType = PointType.STOPOVER"><i class="fa-solid fa-plus fa-lg"></i> Zwischenstopps hinzufügen</button>
+      </div>
+    </div>
+
+    <!--  end point section-->
+    <div class="route-section">
+      <div class="point-box">
+        <div class="point-label">
+          <i class="fas fa-map-marker-alt fa-2xl icon-end"></i>
+          <h2>Ziel</h2>
+        </div>
+        <button class="btn btn-secondary" (click)="currentType = PointType.ENDPOINT" [disabled]="endPoint">
+          <i class="fa-solid fa-plus fa-lg" *ngIf="!endPoint"></i>
+          <i class="fa-solid fa-check fa-lg" *ngIf="endPoint"></i>
+          {{endPoint ? 'Ziel ausgewählt!' : 'Ziel hinzufügen'}}
+        </button>
+      </div>
+    </div>
+
+    <div class="route-action d-flex flex-column">
+      <button (click)="loadRoute()" class="btn btn-primary">Strecke anzeigen</button>
+      <button (click)="resetMap()" class="btn btn-outline-primary">Karte zurücksetzen</button>
+    </div>
+  </div>
+  <div id="map-container" class="flex-grow-1">
+    <div id="map"></div>
+    <div *ngIf="routePlan" class="route-info-panel">
+      <h3>Routeninformation</h3>
+      <p><strong>Distanz:</strong> {{ routePlan.totalDistanceKm}}km</p>
+      <p><strong>Dauer:</strong> {{ routePlan.durationMin }}min</p>
+      <p><strong>Preis:</strong> €{{ routePlan.price}}</p>
+    </div>
+  </div>
+</div>
+
+
+

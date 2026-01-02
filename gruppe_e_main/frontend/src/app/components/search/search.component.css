@@ -1,0 +1,45 @@
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* 搜索按钮与输入框之间间距 */
+  }
+  
+  .search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input-container input {
+    height: 35px;
+    padding-right: 24px; /* 给x按钮预留空间 */
+    font-size: 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+    outline: none;
+    border: 1.5px solid #000000;
+  }
+  
+  .close-button {
+    position: absolute;
+    right: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+    padding: 0;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  

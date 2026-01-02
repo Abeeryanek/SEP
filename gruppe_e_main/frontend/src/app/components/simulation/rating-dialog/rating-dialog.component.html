@@ -1,0 +1,19 @@
+<div class="rating-dialog">
+  <h2>Please Rating</h2>
+
+  <div class="starts">
+    <ng-container *ngFor="let star of stars; let i = index">
+      <span
+        class="star"
+        [class.filled]="i < (hoverRating || rating)"
+        (mouseenter)="setHover(i + 1)"
+        (mouseleave)="clearHover()"
+        (click)="setRating(i + 1)"
+      >
+        ★
+      </span>
+    </ng-container>
+  </div>
+
+  <button (click)="submitRating()" [disabled]="rating === 0">Submit</button>
+</div>

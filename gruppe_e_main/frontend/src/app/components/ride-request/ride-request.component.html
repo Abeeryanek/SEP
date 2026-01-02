@@ -1,0 +1,180 @@
+<div class="ride-request-container">
+  <button class="back-btn" routerLink="/dashboard" aria-label="Zurück zur Hauptseite">&#8592;</button>
+  <h2>Fahranfrage erstellen / anzeigen</h2>
+
+  <div *ngIf="successMsg" class="success-msg">{{ successMsg }}</div>
+  <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+
+  <form (ngSubmit)="createRequest()">
+    <!-- Startpunkt -->
+    <label>Startpunkt</label>
+    <select [(ngModel)]="start.type" name="startType">
+      <option value="geo">Aktuelle Position</option>
+      <option value="address">Adresse</option>
+      <option value="poi">POI</option>
+      <option value="coords">Koordinaten</option>
+    </select>
+    <ng-container [ngSwitch]="start.type">
+      <button *ngSwitchCase="'geo'" type="button" (click)="useGeolocation(start)">Position übernehmen</button>
+      <div *ngSwitchCase="'address'" class="address-input-container">
+        <input type="text"
+               [(ngModel)]="start.address"
+               name="startAddress"
+               placeholder="Adresse"
+               (input)="onStartAddressChange($event)">
+        <div *ngIf="startSuggestions.length > 0" class="suggestions-list">
+          <div *ngFor="let suggestion of startSuggestions"
+               class="suggestion-item"
+               (click)="selectStartSuggestion(suggestion)">
+            {{ suggestion.display_name }}
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'poi'" class="address-input-container">
+        <input type="text"
+               [(ngModel)]="start.poi"
+               name="startPoi"
+               placeholder="POI (z.B. Theater, Restaurant)"
+               (input)="onStartPOIChange($event)">
+        <div *ngIf="startPOISuggestions.length > 0" class="suggestions-list">
+          <div *ngFor="let suggestion of startPOISuggestions"
+               class="suggestion-item"
+               (click)="selectStartPOI(suggestion)">
+            {{ suggestion.display_name }}
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'coords'" class="coords-row">
+        <input type="number" [(ngModel)]="start.lat" name="startLat" placeholder="Latitude">
+        <input type="number" [(ngModel)]="start.lng" name="startLng" placeholder="Longitude">
+      </div>
+    </ng-container>
+
+    <!-- Zielpunkt -->
+    <label>Zielpunkt</label>
+    <select [(ngModel)]="destination.type" name="destinationType">
+      <option value="geo">Aktuelle Position</option>
+      <option value="address">Adresse</option>
+      <option value="poi">POI</option>
+      <option value="coords">Koordinaten</option>
+    </select>
+    <ng-container [ngSwitch]="destination.type">
+      <button *ngSwitchCase="'geo'" type="button" (click)="useGeolocation(destination)">Position übernehmen</button>
+      <div *ngSwitchCase="'address'" class="address-input-container">
+        <input type="text"
+               [(ngModel)]="destination.address"
+               name="destinationAddress"
+               placeholder="Adresse"
+               (input)="onDestinationAddressChange($event)">
+        <div *ngIf="destinationSuggestions.length > 0" class="suggestions-list">
+          <div *ngFor="let suggestion of destinationSuggestions"
+               class="suggestion-item"
+               (click)="selectDestinationSuggestion(suggestion)">
+            {{ suggestion.display_name }}
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'poi'" class="address-input-container">
+        <input type="text"
+               [(ngModel)]="destination.poi"
+               name="destinationPoi"
+               placeholder="POI (z.B. Theater, Restaurant)"
+               (input)="onDestinationPOIChange($event)">
+        <div *ngIf="destinationPOISuggestions.length > 0" class="suggestions-list">
+          <div *ngFor="let suggestion of destinationPOISuggestions"
+               class="suggestion-item"
+               (click)="selectDestinationPOI(suggestion)">
+            {{ suggestion.display_name }}
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'coords'" class="coords-row">
+        <input type="number" [(ngModel)]="destination.lat" name="destinationLat" placeholder="Latitude">
+        <input type="number" [(ngModel)]="destination.lng" name="destinationLng" placeholder="Longitude">
+      </div>
+    </ng-container>
+
+    <!-- Dynamische Zwischenstopps -->
+    <label>Zwischenstopps</label>
+    <div *ngFor="let stop of stopovers; let i = index" class="stopover-box">
+      <select [(ngModel)]="stop.type" [name]="'stopType' + i">
+        <option value="address">Adresse, POI</option>
+      </select>
+        <div class="address-input-container">
+          <input type="text"
+                 [(ngModel)]="stop.address"
+                 [name]="'stopAddress' + i"
+                 placeholder="Adresse">
+          <button type="button" (click)="completeStopoverAddress(i, stop.address!)">Hinzufügen</button>
+          <button type="button" (click)="removeStopover(i)">Entfernen</button>
+        </div>
+    </div>
+    <button type="button" (click)="addStopover()">+ Zwischenstopp hinzufügen</button>
+
+    <!-- Fahrzeugklasse -->
+    <label>Fahrzeugklasse</label>
+    <select [(ngModel)]="vehicleClass" name="vehicleClass">
+      <option value="KLEIN">Klein</option>
+      <option value="MEDIUM">Medium</option>
+      <option value="DELUXE">Deluxe</option>
+    </select>
+
+    <button type="submit" [disabled]="hasActiveRequest()" style="margin-top:18px;width:100%;background:#2563eb;color:#fff;font-weight:700;border-radius:10px;padding:14px 0;">Fahranfrage erstellen</button>
+    <div *ngIf="hasActiveRequest()" class="info-msg">Sie haben bereits eine aktive Fahranfrage.</div>
+  </form>
+<!--  Fahrtplanung-->
+  <button type="button" (click)="showRouteByCreatingRequest()" style="margin-top:32px;width:100%;background:#1D4ED8;color:#fff;font-weight:700;border-radius:10px;padding:14px 0;">Route anzeigen</button>
+<!--  Fahrtplanung-->
+  <button type="button" (click)="openModal()" style="margin-top:32px;width:100%;background:#1D4ED8;color:#fff;font-weight:700;border-radius:10px;padding:14px 0;">Fahranfragen zeigen</button>
+
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-box">
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+      <h2>Fahranfragen Verlauf</h2>
+      <div *ngIf="getAbgeschlosseneRequests().length === 0">Keine Fahranfragen vorhanden.</div>
+      <div *ngIf="getAbgeschlosseneRequests().length > 0">
+        <div *ngFor="let req of getAbgeschlosseneRequests()" class="request-item">
+          <div>
+            <b>Start:</b> {{ getLocationString(req.start) }}<br>
+            <b *ngIf="req.stopovers && req.stopovers.length > 0">Zwischenstopps:</b>
+            <ul *ngIf="req.stopovers && req.stopovers.length > 0">
+              <li *ngFor="let stop of req.stopovers">{{ getLocationString(stop) }}</li>
+            </ul>
+            <b>Ziel:</b> {{ getLocationString(req.destination) }}<br>
+            <b>Fahrzeugklasse:</b> {{ req.vehicleClass }}<br>
+            <b>Status:</b> {{ req.status }}<br>
+            <b>Erstellt:</b> {{ req.createdAt | date:'short' }}<br>
+            <b>Zuletzt geändert:</b> {{ req.updatedAt | date:'short' }}
+          </div>
+          <button (click)="deleteRequestById(req.id!)" class="delete-btn">Löschen</button>
+        </div>
+        <div *ngIf="hasActiveRequest()" class="active-request-modal">
+          <h3>Aktive Fahranfrage</h3>
+          <div *ngFor="let req of getAktiveRequests()">
+            <b>Start:</b> {{ getLocationString(req.start) }}<br>
+            <b *ngIf="req.stopovers && req.stopovers.length > 0">Zwischenstopps:</b>
+            <ul *ngIf="req.stopovers && req.stopovers.length > 0">
+              <li *ngFor="let stop of req.stopovers">{{ getLocationString(stop) }}</li>
+            </ul>
+            <b>Ziel:</b> {{ getLocationString(req.destination) }}<br>
+            <b>Fahrzeugklasse:</b> {{ req.vehicleClass }}<br>
+            <b>Status:</b> {{ req.status }}<br>
+            <b>Erstellt:</b> {{ req.createdAt | date:'short' }}<br>
+            <b>Zuletzt geändert:</b> {{ req.updatedAt | date:'short' }}<br>
+            <button (click)="completeRequestById(req.id!)">Abschließen</button>
+            <button (click)="deleteRequestById(req.id!)" class="delete-btn">Löschen</button>
+<!--  Fahrtplanung-->
+            <button (click)="showRouteByHistory(req)">Route anzeigen</button>
+<!--  Fahrtplanung-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  Fahrtplanung-->
+<div class="map-modal" *ngIf="showMap">
+  <button class="map-close-btn" (click)="closeMap()"><i class="fa-solid fa-circle-xmark"></i></button>
+  <app-map [routePlan]="routePlan" [showOnlyMode]="true"></app-map>
+</div>
+<!--  Fahrtplanung-->

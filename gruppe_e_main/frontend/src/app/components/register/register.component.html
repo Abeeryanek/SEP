@@ -1,0 +1,64 @@
+<div class="welcome-message" (click)="navigateHome()">SEP Voyage</div>
+
+<div class="scroll-container">
+  <div class="form-container">
+    <form class="register-form" (ngSubmit)="onRegister()">
+      <h1>Register</h1>
+
+      <label>Username <span>*</span></label>
+      <input type="text" [(ngModel)]="user.username" name="username" required>
+      <div class="error" *ngIf="errors.username">{{ errors.username }}</div>
+
+      <label>First name <span>*</span></label>
+      <input type="text" [(ngModel)]="user.firstname" name="firstname" required>
+      <div class="error" *ngIf="errors.firstname">{{ errors.firstname }}</div>
+
+      <label>Last name <span>*</span></label>
+      <input type="text" [(ngModel)]="user.lastname" name="lastName" required>
+      <div class="error" *ngIf="errors.lastname">{{ errors.lastname }}</div>
+
+      <label>Email <span>*</span></label>
+      <input type="email" [(ngModel)]="user.email" name="email" required>
+      <div class="error" *ngIf="errors.email">{{ errors.email }}</div>
+
+      <label>Birthdate <span>*</span></label>
+      <input type="date" [(ngModel)]="user.birthdate" name="birthdate" required>
+      <div class="error" *ngIf="errors.birthdate">{{ errors.birthdate }}</div>
+
+      <label>Role <span>*</span></label>
+      <div class="role-options">
+        <label>
+          <input type="radio" name="role" [value]="'KUNDE'" [(ngModel)]="user.role" required>
+          Customer
+        </label>
+        <label>
+          <input type="radio" name="role" [value]="'FAHRER'" [(ngModel)]="user.role">
+          Driver
+        </label>
+      </div>
+      <div class="error" *ngIf="errors.role">{{ errors.role }}</div>
+      <div *ngIf="isDriver">
+        <label>Choose Your Car Type (optional)</label>
+        <select [(ngModel)]="user.carType" name="carType">
+          <option [value]="'NULL'">-- Select Car Type --</option>
+          <option [value]="'KLEIN'">Small</option>
+          <option [value]="'MEDIUM'">Medium</option>
+          <option [value]="'DELUXE'">Deluxe</option>
+        </select>
+      </div>
+
+      <label>Password (at least 8 characters) <span>*</span></label>
+      <input type="password" [(ngModel)]="user.password" name="password" required>
+      <div class="error" *ngIf="errors.password">{{ errors.password }}</div>
+
+      <label>Confirm Password <span>*</span></label>
+      <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+      <div class="error" *ngIf="errors.confirmPassword">{{ errors.confirmPassword }}</div>
+
+      <label>Profile Picture (optional)</label>
+      <input type="file" (change)="onFileSelected($event)" name="profilePicture" accept="image/">
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>

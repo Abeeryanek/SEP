@@ -1,0 +1,8 @@
+export enum SimulationMessageType {
+    SPEED_CHANGE = 'SPEED_CHANGE',
+    INDEX_CHANGE = 'INDEX_CHANGE',
+    COMPLETE = 'COMPLETE',
+    REQUEST_PAYMENT = 'REQUEST_PAYMENT',
+    UPDATE_ROUTE = 'UPDATE_ROUTE'
+    
+}

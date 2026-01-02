@@ -1,0 +1,39 @@
+<div class="welcome-message" (click)="navigateHome()">SEP Voyage</div>
+
+<div class="form-container">
+  <form *ngIf="!show2FA" class="login-form" (ngSubmit)="initiateLogin()">
+    <h1>Login</h1>
+
+    <label>Username <span>*</span></label>
+    <input type="text" [(ngModel)]="username" name="username" required>
+
+    <label>Password <span>*</span></label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+
+    <button type="submit">Login</button>
+    <div class="error" *ngIf="loginError">{{ loginError }}</div>
+
+    <p class="terms-notice">
+      By continuing, you agree to receive emails at the email provided,
+      including automated ones, from SEP Voyage and its affiliates.
+    </p>
+  </form>
+
+  <form *ngIf="show2FA" class="login-form" (ngSubmit)="verify()">
+    <h1>Two-Factor Authentication</h1>
+    <p class="verification-notice">A verification code was sent to your email</p>
+
+    <label>Verification Code <span>*</span></label>
+    <input type="text" [(ngModel)]="twoFACode" name="twoFACode" required>
+    <small class="code-hint">Or use your super code: {{ superCode }}</small>
+
+    <div class="form-actions">
+      <button type="button" class="back-button" (click)="show2FA = false">Back</button>
+      <button type="submit" class="verify-button">Verify</button>
+    </div>
+    <div class="error" *ngIf="twoFAError">{{ twoFAError }}</div>
+  </form>
+  <p class="register-prompt">
+    Not registered yet? <a routerLink="/register" class="register-link">Register now</a>
+  </p>
+</div>

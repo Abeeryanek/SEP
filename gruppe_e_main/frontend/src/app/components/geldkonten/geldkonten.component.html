@@ -1,0 +1,10 @@
+<form (ngSubmit)="geldAufladen()">
+  <div class="form-box">
+    <h1>Dein Konto</h1>
+    <div class="kontostand" *ngIf="kontostand">Aktueller Kontostand: {{ kontostand }}</div>
+    <label>Geldbetrag eingeben <span>*</span></label>
+    <input type="number" [(ngModel)]="money" name="money" required>
+    <div class="error" *ngIf="error">{{error}}</div>
+    <button type="submit">Einzahlen</button>
+  </div>
+</form>

@@ -1,0 +1,354 @@
+.ride-request-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(30,64,175,0.10);
+  padding: 40px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid var(--main-color);
+}
+
+.ride-request-container h2 {
+  font-size: 2rem;
+  color: var(--main-color);
+  font-family: 'Bookman Old Style', serif;
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(90,90,90,0.04);
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-weight: 600;
+  color: var(--main-color);
+  margin-bottom: 4px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 6px;
+  background: var(--main-bg);
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border: 1.5px solid var(--main-color);
+  outline: none;
+}
+
+.coords-row {
+  display: flex;
+  gap: 10px;
+}
+.coords-row input {
+  width: 50%;
+}
+
+button[type="submit"], .active-request-box button {
+  background: var(--main-color);
+  color: #fff;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30,64,175,0.10);
+  transition: background 0.2s, transform 0.2s, border 0.2s;
+}
+button[type="submit"]:hover, .active-request-box button:hover {
+  background: var(--accent-color);
+  color: var(--main-color);
+  border: 2px solid var(--gold);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.success-msg {
+  color: #22c55e;
+  background: #e7fbe9;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+.error-msg {
+  color: #ef4444;
+  background: #fbe7e7;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.active-request-box {
+  width: 100%;
+  background: var(--main-bg);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(58,80,107,0.10);
+  padding: 32px 24px 24px 24px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  border: 1.5px solid var(--accent-color);
+}
+.active-request-box h3 {
+  color: var(--main-color);
+  margin-bottom: 10px;
+}
+
+.active-request-box .action-btns {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.action-btns .btn {
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 32px;
+  border: 2px solid var(--main-color);
+  background: var(--main-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(58,80,107,0.10);
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.action-btns .btn:hover {
+  background: var(--accent-color);
+  color: var(--main-color);
+  border: 2px solid var(--gold);
+  transform: translateY(-2px) scale(1.03);
+}
+.action-btns .btn.delete {
+  background: #ef4444;
+  color: #fff;
+  border: 2px solid #ef4444;
+}
+.action-btns .btn.delete:hover {
+  background: #fff;
+  color: #ef4444;
+  border: 2px solid var(--gold);
+}
+
+@media (max-width: 700px) {
+  .ride-request-container {
+    padding: 18px 4px 12px 4px;
+  }
+  form {
+    gap: 10px;
+  }
+  .active-request-box {
+    padding: 10px 4px 8px 4px;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(58, 80, 107, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(58,80,107,0.18);
+  padding: 36px 32px 24px 32px;
+  min-width: 340px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 2px solid var(--gold);
+}
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--main-color);
+  cursor: pointer;
+}
+.request-item {
+  background: var(--main-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(58,80,107,0.07);
+  padding: 18px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid var(--accent-color);
+}
+.delete-btn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-right: 8px;
+  transition: background 0.2s;
+}
+.delete-btn:hover {
+  background: #b91c1c;
+}
+.active-request-modal {
+  background: var(--accent-color);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(58,80,107,0.10);
+  padding: 18px 14px;
+  margin-top: 18px;
+  border: 1.5px solid var(--gold);
+}
+.info-msg {
+  color: var(--main-color);
+  background: var(--accent-color);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid var(--gold);
+}
+
+.back-btn {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  background: var(--accent-color);
+  color: var(--main-color);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(58,80,107,0.08);
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  z-index: 5;
+}
+.back-btn:hover {
+  background: var(--main-color);
+  color: #fff;
+  border: 2px solid var(--gold);
+}
+
+.address-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1.5px solid var(--accent-color);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 6px rgba(58,80,107,0.10);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.95rem;
+  color: var(--main-color);
+  border-bottom: 1px solid var(--accent-color);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: var(--accent-color);
+    color: var(--gold);
+  }
+}
+
+// Buttons beim Erstellen/Zeigen
+button[type="submit"], .show-requests-btn {
+  background: var(--main-color);
+  color: #fff;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  padding: 16px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(58,80,107,0.10);
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+}
+button[type="submit"]:hover, .show-requests-btn:hover {
+  background: var(--accent-color);
+  color: var(--main-color);
+  border: 2px solid var(--gold);
+  transform: translateY(-2px) scale(1.03);
+}
+
+//Fahrtplanung
+.map-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.map-content {
+  background: white;
+  width: 80%;
+  height: 80%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.map-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1500;
+}

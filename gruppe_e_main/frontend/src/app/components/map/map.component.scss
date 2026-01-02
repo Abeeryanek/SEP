@@ -1,0 +1,69 @@
+
+#map-container {
+  height: 100vh;
+  position: relative;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.route-panel {
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.route-section{
+  margin-bottom: 10vh;
+  padding: 1rem;
+  .point-box{
+    display: flex;
+    flex-direction: column;
+    .point-label {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+    }
+  }
+}
+
+.route-header{
+  padding: 1rem;
+}
+
+.route-action{
+  padding: 1rem;
+  button{
+    margin-bottom: 1rem;
+  }
+}
+
+.route-info-panel {
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.icon-start{
+  color: #007F00;
+}
+
+.icon-wpt{
+  color: #00AEEF;
+}
+
+.icon-end{
+  color: #C44141;
+}
+

@@ -1,0 +1,26 @@
+.overlay-panel {
+    position: absolute;
+    top: 72px; 
+    right: 16px;
+    background-color: rgba(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 8px 0;
+    z-index: 9999;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  li {
+    padding: 10px 16px;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background: #f0f0f0;
+  }
+  

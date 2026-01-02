@@ -1,0 +1,16 @@
+<div class="search-wrapper">
+    <div class="search-input-container">
+      <input
+        type="text"
+        placeholder="search username..."
+        [(ngModel)]="username"
+        (keyup.enter)="goToProfile()"
+      />
+      <button class="close-button" (click)="closeSearch()">×</button>
+    </div>
+    
+    <button class="icon-button" (click)="goToProfile()">
+      <img src="assets/images/search.svg" alt="search" width="35" height="35" />
+    </button>
+  </div>
+  

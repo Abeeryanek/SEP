@@ -1,0 +1,86 @@
+.kunde-ride-requests-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(30,64,175,0.10);
+  padding: 40px 32px 32px 32px;
+  border: 1.5px solid var(--main-color, #204080);
+}
+
+.customer-notification {
+  background: #f0f8ff;
+  color: #204080;
+  border: 1.5px solid var(--main-color, #204080);
+  border-radius: 8px;
+  font-size: 1.1em;
+  padding: 16px 12px;
+  margin-bottom: 15px;
+  text-align: left;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(30,64,175,0.05);
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-10px);}
+  to   {opacity: 1; transform: translateY(0);}
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+th {
+  cursor: pointer;
+  background: var(--accent-color, #e7fbe9);
+  color: var(--main-color, #204080);
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold, #ffd700);
+  user-select: none;
+}
+
+tr:hover {
+  background: #f3f4f6;
+}
+
+button {
+  margin-right: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--main-color, #204080);
+  background: var(--main-color, #204080);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+button:hover {
+  background: var(--accent-color, #e7fbe9);
+  color: var(--main-color, #204080);
+}
+
+.alert-info {
+  background: #fffbe6;
+  color: var(--gold, #fab005);
+  border: 1px solid var(--gold, #fab005);
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+}
+.alert-success {
+  background: #e7fbe9;
+  color: #22c55e;
+  border: 1px solid #22c55e;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+}

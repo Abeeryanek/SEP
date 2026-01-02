@@ -1,0 +1,31 @@
+<div class="right-box">
+  <button
+    class="icon-button"
+    *ngIf="!userService.searchOpen"
+    (click)="userService.toggleSearch()"
+  >
+    <img
+      src="assets/images/search.svg"
+      alt="search"
+      width="40"
+      height="40"
+    />
+  </button>
+
+  <app-search *ngIf="userService.searchOpen"></app-search>
+
+  <div class="avatar" (click)="userService.openDropdown()">
+    <ng-container *ngIf="userService.profile.profilePictureBase64; else fallbackAvatar">
+      <img
+        [src]="userService.profile.profilePictureBase64"
+        alt="Avatar"
+        class="avatar-img"
+      />
+    </ng-container>
+    <ng-template #fallbackAvatar>
+      <span>{{ userService.username?.substring(0, 2) }}</span>
+    </ng-template>
+
+    <app-dropdown *ngIf="userService.dropdownOpen"></app-dropdown>
+  </div>
+</div>

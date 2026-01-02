@@ -1,0 +1,75 @@
+<div class="table-box mat-elevation-z8">
+  <h2 class="table-title">Fahrt-Historie</h2>
+
+  <mat-form-field >
+    <mat-label>Suche nach Fahrer- oder Kundenname</mat-label>
+    <input matInput (keyup)="applyFilter($event)">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort >
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">Fahrt-ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="updateTime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by updateTime">updateTime</th>
+      <td mat-cell *matCellDef="let row">{{ row.updateTime}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="durationMin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by durationMin">Duration</th>
+      <td mat-cell *matCellDef="let row">{{ row.durationMin }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="ridePrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by ridePrice">
+        ridePrice €</th>
+      <td mat-cell *matCellDef="let row">{{ row.ridePrice}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ratingCustomer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by ratingCustomer">ratingCustomer</th>
+      <td mat-cell *matCellDef="let row">{{ row.ratingCustomer}}/5</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ratingDriver">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by ratingDriver">
+        ratingDriver</th>
+      <td mat-cell *matCellDef="let row">{{ row.ratingDriver}}/5</td>
+    </ng-container>
+
+    <ng-container matColumnDef="customerFullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by customerFullName">CustomerFullName</th>
+      <td mat-cell *matCellDef="let row">{{ row.customerFullName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="customerUsername">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by customerUsername">
+        CustomerUsername</th>
+      <td mat-cell *matCellDef="let row">{{ row.customerUsername }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="driverUsername">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by driverUsername">
+        DriverUsername</th>
+      <td mat-cell *matCellDef="let row">{{ row.driverUsername }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="driverFullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by driverFullName">
+        DriverFullName</th>
+      <td mat-cell *matCellDef="let row">{{ row.driverFullName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalDistanceKm">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by totalDistanceKm">Distanz km</th>
+      <td mat-cell *matCellDef="let row">{{ row.totalDistanceKm }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

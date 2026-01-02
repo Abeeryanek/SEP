@@ -1,0 +1,28 @@
+<div class="profile-view">
+  <div class="profile-image-wrapper">
+  <img
+    *ngIf="userService.profile.profilePictureBase64; else defaultImage"
+    [src]="userService.profile.profilePictureBase64"
+    alt="Profile Picture"
+    class="profile-picture"
+  />
+  <ng-template #defaultImage>
+    <img
+      src="assets/images/profil.png"
+      alt="Default Profile"
+      class="profile-picture"
+    />
+  </ng-template>
+</div>
+  <div class="profile-info">
+    <p>Username: {{ userService.profile.username }}</p>
+    <p>Role: {{ userService.profile.role }}</p>
+    <p>First Name: {{ userService.profile.firstname }}</p>
+    <p>Last Name: {{ userService.profile.lastname }}</p>
+    <p>Email: {{ userService.profile.email }}</p>
+    <p>Birthdate: {{ userService.profile.birthdate }}</p>
+    <p>Rating: {{ userService.profile.rating }}</p>
+    <p>Total Trips: {{ userService.profile.totalTrips }}</p>
+    <p>Balance: {{ (userService.profile.balance || 0) | currency: 'EUR' }}</p>
+  </div>
+</div>

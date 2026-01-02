@@ -1,0 +1,31 @@
+.table-box {
+  width: 99%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f4f7f9;
+  border: 1px solid #b0c4de;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 100px;
+}
+
+.table-title {
+  text-align: center;
+  color: #5b95ec;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+}
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th{
+  font-weight:bold;
+}

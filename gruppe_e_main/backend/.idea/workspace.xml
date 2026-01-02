@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7855efa2-5206-421a-96dc-1562956129ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/exception/BroadcastException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/exception/InvalidRoleException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/exception/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/exception/UserExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sepdrive/controller/SimulationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/controller/SimulationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sepdrive/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sepdrive/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sepdrive/service/impl/InMemorySimulationStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/service/impl/InMemorySimulationStateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sepdrive/service/impl/RideMatchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/service/impl/RideMatchServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sepdrive/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sepdrive/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/components/simulation/ride-simulation/ride-simulation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/components/simulation/ride-simulation/ride-simulation.component.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kun9411&quot;
+  }
+}</component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;spkuzhan&quot;,
+      &quot;fullname&quot;: &quot;Zhang, Kun&quot;
+    }
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;git@git.uni-due.de:sep/sommersemester_2025/gruppe-e-h/gruppe-e.git&quot;,
+    &quot;second&quot;: &quot;fd65b047-6bf4-4663-abaa-e3aa05da80e2&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:kun9411/sep_drive.git&quot;,
+    &quot;accountId&quot;: &quot;ebd2d941-0371-4f90-a575-af6e3f91317b&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+        <option name="userSettingsFile" value="C:\Users\kunzh\Desktop\heima\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="11" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2wMjUbsLHpU15qBmxQyuYrz7kxN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-Database detector": "Database detector",
+    "Notification.DoNotAsk-Database detector": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.BackendApplication.executor": "Run",
+    "git-widget-placeholder": "change",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Project/sky-take-out",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "service.view.auto.scroll.to.source": "true",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "settings.editor.splitter.proportion": "0.32077393",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.2.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Project\sep\gitlab\backend\src\main\java\com\sepdrive\model" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sepdrive.repository" />
+      <recent name="com.sepdrive.model" />
+      <recent name="com.sepdrive.config" />
+      <recent name="com.sepdrive.service.impl" />
+      <recent name="com.sepdrive.service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sepdrive.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7855efa2-5206-421a-96dc-1562956129ed" name="Changes" comment="" />
+      <created>1745858355785</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745858355785</updated>
+      <workItem from="1745858359437" duration="38000" />
+      <workItem from="1746463179757" duration="7079000" />
+      <workItem from="1746470330915" duration="940000" />
+      <workItem from="1746471346628" duration="2719000" />
+      <workItem from="1746478128845" duration="5847000" />
+      <workItem from="1746563339401" duration="249000" />
+      <workItem from="1746699591126" duration="778000" />
+      <workItem from="1746700403980" duration="3677000" />
+      <workItem from="1746724584983" duration="720000" />
+      <workItem from="1746725323943" duration="272000" />
+      <workItem from="1746725789570" duration="441000" />
+      <workItem from="1746731447503" duration="1202000" />
+      <workItem from="1746733533525" duration="3788000" />
+      <workItem from="1746865260992" duration="616000" />
+      <workItem from="1746904541827" duration="2635000" />
+      <workItem from="1746962227511" duration="5197000" />
+      <workItem from="1746971661589" duration="2372000" />
+      <workItem from="1747167842532" duration="291000" />
+      <workItem from="1747170077046" duration="134000" />
+      <workItem from="1747176228673" duration="6418000" />
+      <workItem from="1747210504881" duration="16925000" />
+      <workItem from="1747472746859" duration="6000" />
+      <workItem from="1747559311687" duration="6215000" />
+      <workItem from="1747649097772" duration="10829000" />
+      <workItem from="1747817708612" duration="17568000" />
+      <workItem from="1747897088666" duration="5909000" />
+      <workItem from="1748350585937" duration="11401000" />
+      <workItem from="1748378872176" duration="16268000" />
+      <workItem from="1748520199130" duration="21000000" />
+      <workItem from="1748797645636" duration="9054000" />
+      <workItem from="1748810727073" duration="278000" />
+      <workItem from="1748811024548" duration="2702000" />
+      <workItem from="1748851222886" duration="8107000" />
+      <workItem from="1748960232230" duration="681000" />
+      <workItem from="1749059868748" duration="19534000" />
+      <workItem from="1749197336487" duration="7841000" />
+      <workItem from="1749242895154" duration="3012000" />
+      <workItem from="1749328136294" duration="1098000" />
+      <workItem from="1749392002454" duration="21838000" />
+      <workItem from="1749578475234" duration="6782000" />
+      <workItem from="1749722393874" duration="8172000" />
+      <workItem from="1750068656493" duration="3144000" />
+      <workItem from="1750093917946" duration="7345000" />
+      <workItem from="1750150396550" duration="8996000" />
+      <workItem from="1750261512303" duration="10684000" />
+      <workItem from="1750594773952" duration="594000" />
+      <workItem from="1751062787802" duration="6393000" />
+      <workItem from="1751199709202" duration="12933000" />
+      <workItem from="1751563495395" duration="14000" />
+      <workItem from="1751563524783" duration="8973000" />
+      <workItem from="1751703141588" duration="2443000" />
+      <workItem from="1751883855414" duration="960000" />
+      <workItem from="1751914358549" duration="1685000" />
+      <workItem from="1751965070115" duration="28161000" />
+      <workItem from="1752262383654" duration="3141000" />
+      <workItem from="1752312593128" duration="5922000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sepdrive/service/RoutePlanService.java</url>
+          <line>16</line>
+          <properties class="com.sepdrive.service.RoutePlanService" method="createRoutePlan">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

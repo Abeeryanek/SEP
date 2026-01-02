@@ -1,0 +1,5 @@
+com\sepdrive\service\impl\RoutePlanServiceImplTest.class
+com\sepdrive\service\TransactionServiceTest$TestTransactionService.class
+com\sepdrive\service\TransactionServiceTest.class
+com\sepdrive\backend\BackendApplicationTests.class
+com\sepdrive\backend\Repository\FahrleaderTest.class

@@ -1,0 +1,91 @@
+/*.kunde-container {*/
+/*  display: block;*/
+/*  height: 100vh;*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  overflow: hidden;*/
+/*  position: relative;*/
+/*}*/
+
+/*.header-bar {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 64px;*/
+
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*  padding: 0 16px;*/
+/*  z-index: 1000;*/
+/*}*/
+.right-box {
+  /*position: absolute;*/
+  /*top: 16px;*/
+  /*right: 16px;*/
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.avatar {
+  background: #626973;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+
+.avatar span {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* .dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: rgb(255, 0, 0);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 8px 0;
+  list-style: none;
+  z-index: 9999;
+} */
+
+/* app-map, .map-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+} */

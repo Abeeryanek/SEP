@@ -1,0 +1,134 @@
+<div class="fahrer-ride-requests-container">
+  <h2>Verfügbare Fahranfragen</h2>
+
+  <div class="container mt-4">
+    <!-- Fehlermeldung -->
+    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+      {{ errorMsg }}
+    </div>
+
+    <!-- Fahrer-Position -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Ihre Position</h5>
+        <div class="mb-3">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn" [class.btn-primary]="positionType === 'geo'" (click)="positionType = 'geo'">Geolocation</button>
+            <button type="button" class="btn" [class.btn-primary]="positionType === 'address'" (click)="positionType = 'address'">Adresse</button>
+            <button type="button" class="btn" [class.btn-primary]="positionType === 'poi'" (click)="positionType = 'poi'">POI</button>
+            <button type="button" class="btn" [class.btn-primary]="positionType === 'coords'" (click)="positionType = 'coords'">Koordinaten</button>
+          </div>
+        </div>
+
+        <!-- Geolocation -->
+        <div *ngIf="positionType === 'geo'" class="mb-3">
+          <button class="btn btn-secondary" (click)="setPositionByGeolocation()">Aktuelle Position verwenden</button>
+        </div>
+
+        <!-- Adresse -->
+        <div *ngIf="positionType === 'address'" class="mb-3">
+          <input type="text" class="form-control" [(ngModel)]="driverAddress" (input)="onAddressInput($event)" placeholder="Adresse eingeben">
+          <div class="list-group mt-2" *ngIf="addressSuggestions.length > 0">
+            <button *ngFor="let suggestion of addressSuggestions" class="list-group-item list-group-item-action" (click)="selectAddressSuggestion(suggestion)">
+              {{ suggestion.display_name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- POI -->
+        <div *ngIf="positionType === 'poi'" class="mb-3">
+          <input type="text" class="form-control" [(ngModel)]="driverPOI" (input)="onPOIInput($event)" placeholder="POI eingeben">
+          <div class="list-group mt-2" *ngIf="poiSuggestions.length > 0">
+            <button *ngFor="let suggestion of poiSuggestions" class="list-group-item list-group-item-action" (click)="selectPOISuggestion(suggestion)">
+              {{ suggestion.display_name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Koordinaten -->
+        <div *ngIf="positionType === 'coords'" class="mb-3">
+          <div class="row">
+            <div class="col">
+              <input type="number" class="form-control" [(ngModel)]="driverLat" placeholder="Breitengrad">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" [(ngModel)]="driverLng" placeholder="Längengrad">
+            </div>
+          </div>
+          <button class="btn btn-secondary mt-2" (click)="recalculateDistances()">Übernehmen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabelle -->
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="sortBy('id')" style="cursor: pointer">
+              ID {{ sortColumn === 'id' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('createdAt')" style="cursor: pointer">
+              Erstellt {{ sortColumn === 'createdAt' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('distance')" style="cursor: pointer">
+              Entfernung {{ sortColumn === 'distance' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('customerName')" style="cursor: pointer">
+              Kunde {{ sortColumn === 'customerName' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('customerRating')" style="cursor: pointer">
+              Bewertung {{ sortColumn === 'customerRating' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('vehicleClass')" style="cursor: pointer">
+              Fahrzeugklasse {{ sortColumn === 'vehicleClass' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+<!--  Fahrtplanung-->
+            <th (click)="sortBy('totalDistanceKm')" style="cursor: pointer">
+              Streckenlänge {{ sortColumn === 'totalDistanceKm' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('durationMin')" style="cursor: pointer">
+              Dauer {{ sortColumn === 'durationMin' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+            <th (click)="sortBy('price')" style="cursor: pointer">
+              Preis {{ sortColumn === 'price' ? (sortAsc ? '↑' : '↓') : '' }}
+            </th>
+<!--  Fahrtplanung-->
+            <th>Aktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of getSortedRequests()">
+            <ng-container *ngIf="!request.hasBeenAccepted"> <!--  Fahrtangebot-->
+            <td>{{ request.id }}</td>
+            <td>{{ request.createdAt | date:'short' }}</td>
+            <td>{{ request.distance | number:'1.1-1' }} km</td>
+            <td>{{ request.customerName }}</td>
+            <td>{{ request.customerRating | number:'1.1-1' }}</td>
+            <td>{{ request.vehicleClass }}</td>
+<!--  Fahrtplanung-->
+            <td>{{ request.totalDistanceKm }}km</td>
+            <td>{{ request.durationMin }}min</td>
+            <td>€{{ request.price }}</td>
+<!--  Fahrtplanung-->
+<!--  Fahrtangebot-->
+            <td><button *ngIf="!rideOffer || rideOffer['rideRequestId'] != request.id"
+                        (click)="createRideOffer(request.id)"
+                        class="btn btn-primary">Annehmen</button>
+                <button *ngIf="rideOffer && rideOffer['rideRequestId'] == request.id"
+                        (click)="withDrawRideOffer(rideOffer.id)"
+                        class="btn btn-primary">Zurückziehen</button>
+            </td>
+            </ng-container>
+<!--  Fahrtangebot-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Keine Anfragen -->
+    <div *ngIf="rideRequests.length === 0 && !errorMsg" class="alert alert-info" role="alert">
+      Es gibt momentan keine offenen Fahranfragen.
+    </div>
+  </div>
+</div>

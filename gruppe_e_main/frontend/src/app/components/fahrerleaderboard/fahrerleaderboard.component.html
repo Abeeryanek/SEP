@@ -1,0 +1,52 @@
+<div class="table-box mat-elevation-z8">
+  <h2 class="table-title">Fahrt-Leaderboard</h2>
+
+  <mat-form-field >
+    <mat-label>Suche nach Fahrername</mat-label>
+    <input matInput (keyup)="applyFilter($event)">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort >
+
+    <ng-container matColumnDef="driverUsername">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Benutzername des Fahrers</th>
+      <td mat-cell *matCellDef="let row">{{ row.driverUsername}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="driverFullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name des Fahrers </th>
+      <td mat-cell *matCellDef="let row">{{ row.driverFullName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalDistanceTravelled">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gesamtgefahrene Distanz</th>
+      <td mat-cell *matCellDef="let row">{{ row.totalDistanceTravelled }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="avgRating">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Durchschnittliche Bewertung</th>
+      <td mat-cell *matCellDef="let row">{{ row.avgRating}}/5</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalDurationTravelled">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fahrzeit</th>
+      <td mat-cell *matCellDef="let row">{{ row.totalDurationTravelled}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalRidesTravelled">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Anzahl der Fahrten</th>
+      <td mat-cell *matCellDef="let row">{{ row.totalRidesTravelled}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalMoney">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Geld</th>
+      <td mat-cell *matCellDef="let row">{{ row.totalMoney }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

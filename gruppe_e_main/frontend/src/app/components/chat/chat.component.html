@@ -1,0 +1,45 @@
+<div class="chat-window">
+    <div class="chat-header">
+        Welcome to LiveChat
+    </div>
+    <div class="chat-messages" id="chat-messages">
+        <div
+                *ngFor="let chat of chats"
+                [ngClass]="{'my-message': chat.senderId === myUserId, 'their-message': chat.senderId !== myUserId}">
+            <div class="message-bubble">
+                {{ chat.message}}
+                <span class="status-indicator" *ngIf="chat.senderId === myUserId">
+                  <span *ngIf="chat.isRead">&#10003;</span><!-- ✓ -->
+                  <span *ngIf="!chat.isRead">&#9203;</span> <!-- 🕓 -->
+                </span>
+                <div class="actions" *ngIf="chat.senderId !== myUserId && !chat.isRead">
+                    <span (click)="markAsRead(chat)">Mark as read</span>
+                </div>
+                <div class="actions" *ngIf="chat.senderId === myUserId && !chat.isRead">
+                    <span (click)="editMessage(chat)">Edit</span>
+                    <span (click)="deleteMessage(chat)">Delete</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input">
+        <input
+                type="text"
+                [(ngModel)]="messageText"
+                placeholder="Type your message here..."
+                (keydown.enter)="sendMessage()" />
+
+        <button
+                (click)="sendMessage()"
+                [disabled]="
+    !rideMatch ||
+    !rideMatch.customer ||
+    !rideMatch.driver ||
+    !messageText.trim() ||
+    !chatService.connected
+  ">
+            Senden
+        </button>
+    </div>
+
+</div>

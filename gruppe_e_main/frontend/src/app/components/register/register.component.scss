@@ -1,0 +1,135 @@
+
+:host {
+  display: block;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Bookman Old Style', serif;
+  background:
+    url('https://media.istockphoto.com/id/1170098111/vector/vector-illustration-of-pale-gray-plain-grungy-gradient-empty-background-for-stock.jpg?s=612x612&w=0&k=20&c=3TZw8DkqUVUPUlzEBMko4vvlAOFNz0ROn9c8a3_g3OY=')
+    no-repeat
+    center center / cover;
+}
+
+.welcome-message {
+  font-size: 1rem;
+  color: #1D4ED8;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+  position: fixed;
+  top: 5px;
+  left: 1%;
+  border-bottom: 2px solid #1D4ED8;
+  z-index: 10;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.scroll-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding-top: 50px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
+}
+
+.register-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 40px;
+
+  h1 {
+    color: #1D4ED8;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+
+    span {
+      color: red;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    &[type="date"] {
+      background-color: white;
+    }
+  }
+  .role-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    label {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+  button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+  .error {
+    color: red;
+    font-size: 13px;
+    margin-top: 2px;
+    height: 16px;
+  }
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: white;
+  }
+}
