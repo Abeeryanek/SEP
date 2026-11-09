@@ -1,93 +1,162 @@
-# Gruppe E
+# Sep-Voyage
 
+Fahrdienst-Webanwendung (Kunden fragen Fahrten an, Fahrer machen Angebote) mit Kartenansicht, Routenplanung, Echtzeit-Fahrtsimulation und Live-Chat. Entwickelt im Rahmen des Software-Engineering-Projekts (SEP) von **Gruppe E**.
 
+## Inhaltsverzeichnis
 
-## Getting started
+- [Features](#features)
+- [Tech-Stack](#tech-stack)
+- [Voraussetzungen](#voraussetzungen)
+- [Installation](#installation)
+  - [Variante A: Docker (empfohlen)](#variante-a-docker-empfohlen)
+  - [Variante B: Lokale Installation](#variante-b-lokale-installation)
+- [Benutzung](#benutzung)
+- [Hinweise zum Testen](#hinweise-zum-testen)
+- [Projektstruktur](#projektstruktur)
+- [Team](#team)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Features
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Die Entwicklung erfolgte in drei Zyklen.
 
-## Add your files
+**Zyklus I – Grundlagen**
+- Registrierung und Login (Kunde oder Fahrer) mit Zwei-Faktor-Authentifizierung per E-Mail und einem Supercode als Alternative
+- Benutzerprofile mit Suchfunktion
+- Interaktive Karte (Zoom, Verschieben, Start, Ziel und Zwischenstopps setzen, Route anzeigen)
+- Fahranfragen erstellen (Start und Ziel per aktueller Position, POI, Koordinaten oder Adresse; Wahl der Autoklasse), anzeigen und löschen
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+**Zyklus II – Fahrten**
+- Geldkonto für Kunden (Guthaben aufladen, im Profil einsehen)
+- Liste der verfügbaren Fahranfragen für Fahrer, sortierbar nach Entfernung, Distanz, Dauer, Preis und Kundenbewertung
+- Fahrtplanung mit Distanz, Dauer und Preis
+- Fahrangebote: Fahrer senden oder ziehen Angebote zurück, Kunden nehmen an oder lehnen ab
+- Fahrtdurchführung als Echtzeit-Simulation mit Start/Pause/Fortsetzen, einstellbarer Geschwindigkeit, automatischer Abrechnung und gegenseitiger Bewertung (1 bis 5 Sterne)
+- Fahrhistorie
 
-```
-cd existing_repo
-git remote add origin https://git.uni-due.de/sep/sommersemester_2025/gruppe-e-h/gruppe-e.git
-git branch -M main
-git push -uf origin main
-```
+**Zyklus III – Erweiterungen**
+- Fahrten mit mehreren Zwischenstopps
+- Grafische Statistiken für Fahrer (Einnahmen, Distanz, Fahrzeit, Durchschnittsbewertung; monatlich oder täglich)
+- Live-Änderungen während der Fahrt (Ziel ändern, Zwischenstopps hinzufügen oder entfernen)
+- Fahrer-Leaderboard
+- Live-Chat während der Fahrsimulation (Nachrichten bearbeiten, löschen, als gelesen markieren)
 
-## Integrate with your tools
+## Tech-Stack
 
-- [ ] [Set up project integrations](https://git.uni-due.de/sep/sommersemester_2025/gruppe-e-h/gruppe-e/-/settings/integrations)
+- **Backend:** Java 17, Spring Boot, Maven, JWT, WebSockets
+- **Frontend:** Angular, Leaflet (Karten)
+- **Datenbank:** MySQL 8
+- **Deployment:** Docker, Docker Compose
 
-## Collaborate with your team
+## Voraussetzungen
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+**Für Docker:**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+**Für die lokale Installation:**
+- Java 17 (z. B. OpenJDK 17)
+- Maven
+- Node.js ab Version 18 und npm
+- Angular CLI (`npm install -g @angular/cli`)
+- MySQL 8
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Variante A: Docker (empfohlen)
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+1. Folgende Image-Dateien herunterladen und in einem gemeinsamen Ordner speichern (z. B. `docker_images`). Dort muss auch die Datei `docker-compose.yml` liegen:
+   - `sepdrive-gruppe-e-backend.tar`
+   - `sepdrive-gruppe-e-frontend.tar`
+   - `mysql_8.0.tar`
+2. Docker Desktop starten und warten, bis der Dienst vollständig läuft.
+3. Im Ordner ein Terminal öffnen und die Images importieren:
+   ```bash
+   docker load -i sepdrive-gruppe-e-backend.tar
+   docker load -i sepdrive-gruppe-e-frontend.tar
+   docker load -i mysql_8.0.tar
+   ```
+4. Container starten:
+   ```bash
+   docker compose up -d
+   ```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Weitere Hinweise stehen in der `readme-docker.md`.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Variante B: Lokale Installation
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+**1. Datenbank**
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+MySQL 8 installieren und eine Datenbank namens `sep_drive` anlegen. Die Zugangsdaten müssen mit denen in der `application.properties` übereinstimmen (Standard: Benutzer `root`, Passwort `sep1`).
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+**2. Backend** (Ordner `gruppe-e/backend`)
 
-## License
-For open source projects, say how it is licensed.
+```bash
+mvn clean install -DskipTests
+mvn spring-boot:run
+```
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**3. Frontend** (Ordner `gruppe-e/frontend`)
+
+```bash
+npm install
+npm install @angular/cli
+npm install leaflet
+npm start
+```
+
+Das Frontend ist anschließend unter <http://localhost:4200> erreichbar.
+
+## Benutzung
+
+### Registrierung und Login
+1. Auf **Registrierung** klicken und alle Angaben ausfüllen.
+2. Mit Benutzername und Passwort anmelden.
+3. Der 2FA-Code kommt per E-Mail an die hinterlegte Adresse.
+4. Nach erfolgreichem Login bestätigt man die Meldung mit **OK** und landet auf der Homepage.
+
+### Profile und Suche
+- Eigenes Profil: Profilbild-Icon oben rechts, dann **Profile**
+- Profil suchen: Lupen-Icon anklicken und den Benutzernamen eingeben
+
+### Karte
+- Im linken Panel einen Button wählen (z. B. **Ziel hinzufügen**) und danach auf die Karte klicken.
+- Start und Ziel sind Pflicht, jeweils nur einmal. Zwischenstopps sind optional.
+- **Strecke anzeigen** berechnet die Route, **Karte zurücksetzen** entfernt alle Pins und die Route.
+
+### Fahranfrage erstellen (Kunde)
+1. Start und Ziel festlegen (aktuelle Position, POI, Koordinaten oder Adresse). Bei Adresse oder POI muss ein Eintrag aus der Vorschlagsliste gewählt werden.
+2. Optional über **Zwischenstopps hinzufügen** weitere Wegpunkte ergänzen.
+3. Autoklasse wählen.
+4. Mit **Route anzeigen** werden Distanz, Dauer und Preis angezeigt.
+5. **Fahranfrage erstellen** sendet die Anfrage ab.
+
+Die aktive Fahrt erscheint unter **Meine Fahrt** auf dem Dashboard. Sie kann gelöscht oder abgeschlossen werden, solange sie noch nicht angenommen wurde.
+
+### Fahrangebote
+1. Der Fahrer öffnet **Verfügbare Fahranfragen** und klickt bei einer Anfrage auf **annehmen**. Erneutes Klicken (**zurücknehmen**) zieht das Angebot zurück.
+2. Der Kunde öffnet **Offene Fahrangebote** und nimmt ein Angebot an oder lehnt es ab.
+
+Ein Fahrer kann nur Anfragen annehmen, deren gewünschte Autoklasse zu seinem Fahrzeug passt.
+
+### Fahrsimulation
+Profilbild-Icon, dann **Ride Simulation**.
+
+- Start, Pause und Fortsetzen, Geschwindigkeit per Schieberegler (Fahrtdauer 3 bis 30 Sekunden)
+- Kunde kann live das Ziel ändern sowie Zwischenstopps hinzufügen oder per Doppelklick entfernen (nur noch nicht passierte)
+- Nach Ankunft wird der Fahrpreis automatisch abgebucht bzw. gutgeschrieben, anschließend ist eine gegenseitige Bewertung (1 bis 5 Sterne) möglich
+- Live-Chat mit Bearbeiten, Löschen und **mark as read**. Gelesene Nachrichten lassen sich nicht mehr ändern oder löschen.
+
+### Weitere Funktionen
+- **Mein Guthaben** (Kunde): Guthaben aufladen
+- **Fahrhistorie**: alle abgeschlossenen Fahrten mit Details
+- **Meine Statistiken** (Fahrer): Diagramme nach Monat oder Tag
+- **Fahrleaderboard**: Ranking aller Fahrer
+
+## Hinweise zum Testen
+
+- Für Echtzeit-Funktionen (Angebote, Simulation, Chat) **zwei verschiedene Browser** verwenden: einen für den Kunden, einen für den Fahrer.
+- Eher kurze Strecken testen.
+- Bei Live-Änderungen Ziel oder Zwischenstopps nicht direkt an der aktuellen Fahrzeugposition setzen.
+- Während einer laufenden Simulation die Seite nicht neu laden, da dies die Synchronisation stören kann.
+- Die erste Fahranfrage gilt als aktuelle Fahrt und steht unter **Meine Fahrt**. Erst nach ihrem Abschluss erscheinen Historie und weitere Anfragen unter **Fahranfragen anzeigen**.
+
+##
